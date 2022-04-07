@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Draw & Download Signature</title>
+    <script src = "jSignature/jquery.js"></script>
+    <script src = "jSignature/jSignature.min.js"></script>
+    <script src = "jSignature/modernizr.js"></script>
+  </head>
+  <body>
+    <div id = "signature" style = "border: 1px solid black;">
+
+    </div>
+
+    <button type = "button" id = "preview">Preview</button>
+
+    <img src = "" id = "signaturePreview">
+
+    <a href = "" id = "download" download>Download</a>
+
+    <script type="text/javascript">
+      var signature = $("#signature").jSignature({'UndoButton':true});
+
+      $('#preview').click(function(){
+        var data = signature.jSignature('getData', 'image');
+        $('#signaturePreview').attr('src', "data:" + data);
+      });
+
+      $('#download').click(function(){
+        var image = $('#signaturePreview')[0];
+        this.href = image.src;
+      });
+    </script>
+  </body>
+</html>
